@@ -6,6 +6,379 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="/css/e_commerce.css">
         <title>eCommerce</title>
+
+        <style>
+            :root {
+   
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+            h1, h2, h3, h4, h5, h6, body, html, ul {
+                margin: 0;
+                padding: 0;
+            }
+            /*
+            html {
+                border-image: linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%);
+            }
+            */
+
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+                Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                background-color: #fff;
+                max-width: 90%;
+                width: 100%;
+                margin: 0 auto;
+                height: 200vh;
+            }
+            .border__top {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 16px;
+                background: linear-gradient(-45deg, #fec5cc 0 70%, #bca9d6 70% 100%);
+            }
+            .border__left {
+                display: block;
+                position: absolute;
+                top: 13px;
+                width: 16px;
+                left: 0;
+                height: 290vh;
+                background: linear-gradient(-45deg, #fbf0b0 0 17%, #fec5cc 17% 20%, #a7f8e7 20% 50%, #fec5cc 50% 80%, #bca9d6 80% 100%);
+            }
+            .border__right {
+                display: block;
+                position: absolute;
+                top: 13px;
+                width: 16px;
+                right: 0;
+                height: 290vh;
+                background: linear-gradient(-45deg, #bca9d6 0 9%, #fec5cc 9% 30%, #fbf0b0 30% 80%, #fec5cc 80% 100%);
+            }
+            .border__bottom {
+                display: block;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 16px;
+                z-index: 1;
+                background: linear-gradient(-45deg, #bca9d6 0 15%, #fec5cc 15% 70%, #fbf0b0 70% 100%);
+            }
+
+            .small__nav {
+                margin-top: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 150px;
+            }
+            .small__nav .account__emphasis-link {
+                color: #3498db;
+            }
+
+            .small__nav .account__links {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 60px;
+            }
+            .account__links .account__link-save, .account__links .account__link-cart {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .account__link-save svg {
+                margin-left: 10px;
+            }
+
+            .header {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                margin-bottom: 100px;
+            }
+            .header .title {
+                margin-bottom: 150px;
+                display: grid;
+                grid-template-columns: repeat(5, minmax(min-content, 1fr));
+                height: 80px;
+                grid-gap: 20px;
+            }
+            .title .title__letter:nth-child(2), .title .title__letter:nth-child(4) {
+                align-self: end;
+            }
+
+            .header .header__nav {
+                margin-bottom: 50px;
+            }
+
+            .header__nav .header__list {
+                display: grid;
+                grid-template-columns: repeat(5, min-content); /* repeat(5, minmax(min-content, 1fr)) */
+                place-items: center;
+                list-style-type: none;
+                grid-gap: 60px;
+            }
+            .header__list .header__divider {
+                font-size: 10px;
+                display: flex;
+                justify-content: center;
+                align-self: center;
+            }
+
+            .header__breadcrumbs .breadcrumbs__list {
+                display: grid;
+                grid-template-columns: repeat(7, min-content);
+                place-items: center;
+                list-style-type: none;
+                grid-gap: 20px;
+            }
+            .breadcrumbs__list .breadcrumbs__breadcrumb-item1 {
+                color: #333;
+            }
+            .breadcrumbs__list .breadcrumbs__breadcrumb-item2, .breadcrumbs__list .breadcrumbs__breadcrumb-item3,
+            .breadcrumbs__list .breadcrumbs__breadcrumb-item4, .breadcrumbs__list .slash.unselected {
+                color: rgba(0,0,0,0.2);
+            }
+
+            .product {
+                display: block;
+                position: relative;
+                margin: 0 auto;
+                width: 60%;
+                max-width: 100%;
+            }
+            .product .product__wrap {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 50px;
+            }
+
+            .product__wrap .product__photo {
+                display: grid;
+                grid-template-columns: 1fr;
+                background-image: url('https://i.pinimg.com/564x/95/37/99/953799e7f5f22e5c2435a432b2f61e65.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center center;
+                height: 550px;
+            }
+
+            .product__wrap .product__info {
+                display: grid;
+                grid-template-rows: repeat(4, max-content);
+                grid-gap: 0px;
+                height: 70vh;
+                padding-top: 60px;
+            }
+            .product__info .product__header {
+                display: grid;
+                grid-template-rows: repeat(2, 40px);
+                grid-gap: 0px;
+                padding-bottom: 40px;
+            }
+            .product__header .header__title {
+                display: flex;
+                justify-content: flex-start;
+                align-self: center;
+                color: #cccccc;
+                text-transform: uppercase;
+                font-size: 13px;
+                font-weight: 500;
+                letter-spacing: 3px;
+            }
+            .product__header .header__price {
+                display: flex;
+                justify-content: space-between;
+                align-self: center;
+            }
+            .header__price .price__title {
+                font-size: 25px;
+                align-self: center;
+            }
+            .header__price .price__price {
+                align-self: center;
+            }
+            .product__info .product__desc {
+                display: flex;
+                justify-content: flex-start;
+                align-self: center;
+                padding-top: 20px;
+                padding-bottom: 60px;
+                margin: 0;
+                border-top: 1px solid #ddd;
+                text-align: justify;
+                word-break: break-all;
+            }
+            .product__info .product__btns {
+                display: grid;
+                grid-template-columns: 13% max-content 13%;
+                grid-gap: 10px;
+                padding-bottom: 30px;
+                border-bottom: 1px solid #ddd;
+            }
+            .product__btns .product__btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 47px;
+                background-color: #f3f3f3;
+                border: none;
+                border-radius: 3px;
+            }
+            .product__btns .product__btn:nth-child(2) {
+                width: 150px;
+            }
+
+            .product__info .hash__tag {
+                padding-top: 30px;
+                _display: grid;
+                _grid-template-columns: repeat(5, max-content);
+                grid-auto-flow: column;
+            }
+            .hash__tag span {
+                font-size: 15px;
+                font-weight: 500;
+            }
+            .hash__tag .tag__slash {
+                font-size: 13px;
+                padding: 0 18px 0 18px;
+            }
+
+            .product__image {
+                display: block;
+                position: relative;
+                margin: 0 auto;
+                width: 85%;
+                max-width: 100%;
+                padding-top: 150px;
+                padding-bottom: 100px;
+            }
+            .product__image .image__wrap {
+                display: grid;
+                grid-template-rows: max-content minmax(50px, 50px);
+                grid-gap: 30px;
+            }
+
+            .image__wrap .photo {
+                display: grid;
+                grid-template-columns: 1fr;
+                background-image: url('https://cache1.artprintimages.com/images/featuredCollections/2019/april/limited-edition-opt.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center center;
+                height: 550px;
+            }
+            .image__wrap .image__link {
+                display: grid;
+                grid-template-columns: repeat(2, max-content);
+                grid-gap: 20px;
+                place-content: center;
+            }
+
+            .subs__area {
+                display: block;
+                position: relative;
+                margin: 0 auto;
+                width: 60%;
+                padding-bottom: 60px;
+            }
+            .subs__area .area__items {
+                display: grid;
+                grid-template-rows: repeat(3, max-content);
+                grid-gap: 10px;
+            }
+            .area__items .area__title, .area__items .area__subtitle, .area__items .area__input {
+                display: flex;
+                justify-content: center;
+                align-self: center;
+            }
+            .area__items .area__title {
+                font-size: 35px;
+                font-weight: 400;
+                letter-spacing: 7px;
+                text-transform: uppercase;
+            }
+            .area__items .area__subtitle {
+                font-size: 15px;
+                letter-spacing: 1px;
+            }
+            .area__items .area__input {
+
+            }
+            .area__input .form {
+                display: block;
+                margin-top: 25px;
+            }
+            .form .form__field {
+                width: 320px;
+                background: #fff;
+                color: #a3a3a3;
+                _box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+                border: 0;
+                border: 1px solid #ccc;
+                outline: 0;
+                padding: 10px 18px;
+                font-size: 15px;
+            }
+            .form .uppercase {
+                text-transform: uppercase;
+                font-size: 15px;
+                letter-spacing: -0.5px;
+            }
+            .form .btn__inside {
+                margin-left: -5px;
+            }
+            .form .btn__primary {
+                background: #fbacaf;
+                border: 1px solid #fbacaf;
+                color: #fff;
+                border: none;
+                padding: 13px 36px;
+                font-size: 13px;
+                font-weight: 500;
+                letter-spacing: 2px;
+                margin-top: -2px;
+            }
+
+            .social__wrap {
+                display: block;
+                position: relative;
+                margin: 0 auto;
+                width: 60%;
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+            .social__wrap .social__items {
+                display: grid;
+                grid-template-rows: repeat(2, max-content);
+                grid-gap: 20px;
+            }
+            .social__items .social__icons, .social__items .copyright {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .social__icons .social__icon {
+                display: grid;
+                grid-template-columns: repeat(3, max-content);
+                grid-gap: 40px;
+            }
+            .social__icon svg {
+                fill: #cccccc;
+            }
+            .social__items .copyright {
+                color: #cccccc;
+                font-size: 14px;
+                letter-spacing: 1px;
+            }
+        </style>
     </head>
     <body>
         <div class="border__top"></div>
